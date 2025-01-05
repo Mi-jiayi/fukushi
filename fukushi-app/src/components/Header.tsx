@@ -7,10 +7,11 @@ import { IoPersonOutline } from "react-icons/io5";
 // ヘッダー
 const Header = () => {
   // mock data
+  // 从store中获取，并默认设置第一个
   const accounts = [
-    { name: "アカウントA"},
-    { name: "アカウントB",},
-    { name: "アカウントC"},
+    { name: "アカウント1"},
+    { name: "アカウント2",},
+    { name: "アカウント3"},
   ];
 
   const [currentAccount, setCurrentAccount] = useState(accounts[0].name);
@@ -33,7 +34,8 @@ const Header = () => {
   const handleAccountChange = (account: { name: string }) => {
     setCurrentAccount(account.name);
     setIsDropdownOpen(false); // セレクトボックスを非表示
-    router.push('kanjyaList'); // 遷移
+    // 
+    alert(account.name);
   };
 
   useEffect(() => {
