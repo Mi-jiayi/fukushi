@@ -1,0 +1,88 @@
+{
+  "accountList": [
+    {
+      "accountId": 1,
+      "accountName": "アカウント1",
+      "createdAt": "2024.07.19 10:00",
+      "updatedAt": "2024.07.19 10:10"
+    },
+    {
+      "accountId": 2,
+      "accountName": "アカウント2",
+      "createdAt": "2024.07.19 10:05",
+      "updatedAt": "2024.07.19 10:15"
+    },
+    {
+      "accountId": 3,
+      "accountName": "アカウント3",
+      "createdAt": "2024.07.19 10:10",
+      "updatedAt": "2024.07.19 10:20"
+    }
+  ],
+  "kanjyaList": [
+    {
+      "kanjyaId": 1,
+      "accountId": 1,
+      "kanjyaName": "患者太郎",
+      "createdAt": "2024.07.19 10:00",
+      "updatedAt": "2024.07.19 10:05"
+    },
+    {
+      "kanjyaId": 2,
+      "accountId": 1,
+      "kanjyaName": "患者二郎",
+      "createdAt": "2024.07.19 10:02",
+      "updatedAt": "2024.07.19 10:07"
+    },
+    {
+      "kanjyaId": 3,
+      "accountId": 1,
+      "kanjyaName": "患者三郎",
+      "createdAt": "2024.07.19 10:03",
+      "updatedAt": "2024.07.19 10:08"
+    },
+    {
+      "kanjyaId": 4,
+      "accountId": 2,
+      "kanjyaName": "患者四郎",
+      "createdAt": "2024.07.19 10:04",
+      "updatedAt": "2024.07.19 10:09"
+    },
+    {
+      "kanjyaId": 5,
+      "accountId": 3,
+      "kanjyaName": "患者五郎",
+      "createdAt": "2024.07.19 10:05",
+      "updatedAt": "2024.07.19 10:10"
+    }
+  ],
+  "commentList": [
+    {
+      "commentId": 2,
+      "accountId": 2,
+      "kanjyaId": 1,
+      "content": "999999",
+      "createAccountName": "アカウント2",
+      "createdAt": "2024.07.19 10:03",
+      "updatedAt": "2025.01.06 20:30"
+    },
+    {
+      "commentId": 3,
+      "accountId": 1,
+      "kanjyaId": 1,
+      "content": "333333",
+      "createAccountName": "アカウント1",
+      "createdAt": "2025.01.06 20:29",
+      "updatedAt": "2025.01.06 20:30"
+    },
+    {
+      "commentId": 4,
+      "accountId": 1,
+      "kanjyaId": 1,
+      "content": "666666",
+      "createAccountName": "アカウント1",
+      "createdAt": "2025.01.06 20:30",
+      "updatedAt": "2025.01.06 20:30"
+    }
+  ]
+}

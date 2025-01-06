@@ -1,5 +1,9 @@
 {
+  "/kanjyaDetail/page": "app/kanjyaDetail/page.js",
+  "/api/account/list/route": "app/api/account/list/route.js",
+  "/api/comment/list/route": "app/api/comment/list/route.js",
   "/page": "app/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/kanjyaDetail/page": "app/kanjyaDetail/page.js"
+  "/api/kanjya/listByAccountId/route": "app/api/kanjya/listByAccountId/route.js",
+  "/api/comment/edit/route": "app/api/comment/edit/route.js",
+  "/api/comment/add/route": "app/api/comment/add/route.js"
 }

@@ -1,0 +1,3 @@
+{
+  "/api/kanjya/listByAccountId/route": "app/api/kanjya/listByAccountId/route.js"
+}

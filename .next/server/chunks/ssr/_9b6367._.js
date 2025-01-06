@@ -58,7 +58,7 @@ function RootLayout({ children }) {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Header$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/src/app/kanjyaDetail/layout.tsx",
                 lineNumber: 11,
-                columnNumber: 9
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "p-0 pl-0 ml-0",
@@ -77,13 +77,13 @@ function RootLayout({ children }) {
                                 d: "M15.28 5.22a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 000 1.06l6.25 6.25a.75.75 0 101.06-1.06L9.56 12l5.72-5.72a.75.75 0 000-1.06z"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/kanjyaDetail/layout.tsx",
-                                lineNumber: 15,
-                                columnNumber: 17
+                                lineNumber: 24,
+                                columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/kanjyaDetail/layout.tsx",
-                            lineNumber: 14,
-                            columnNumber: 13
+                            lineNumber: 17,
+                            columnNumber: 11
                         }, this),
                         "一覧に戻る"
                     ]
@@ -95,14 +95,14 @@ function RootLayout({ children }) {
             }, void 0, false, {
                 fileName: "[project]/src/app/kanjyaDetail/layout.tsx",
                 lineNumber: 12,
-                columnNumber: 9
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/src/app/kanjyaDetail/layout.tsx",
-                lineNumber: 20,
-                columnNumber: 9
+                lineNumber: 32,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {

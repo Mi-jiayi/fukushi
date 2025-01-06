@@ -10,64 +10,59 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-'use client';
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/router.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AccountProvider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/context/AccountProvider.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
 ;
 ;
 function KanjyaDetail() {
-    // 直接从store中获取todo
-    const accounts = [
-        {
-            "id": 1,
-            "name": "アカウント1",
-            "role": 1
-        },
-        {
-            "id": 2,
-            "name": "アカウント2",
-            "role": 2
-        },
-        {
-            "id": 3,
-            "name": "アカウント3",
-            "role": 3
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
+    const { selectedAccount } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AccountProvider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAccount"])();
+    // 新規コメント投稿内容
+    const [commentList, setCommentList] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])();
+    // コメントリストを取得
+    const fetchCommentList = async ()=>{
+        if (selectedAccount) {
+            try {
+                const accountId = selectedAccount.accountId;
+                const kanjyaId = router.query.kanjyaId;
+                const result = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get("/api/comment/list", {
+                    params: {
+                        accountId,
+                        kanjyaId
+                    }
+                });
+                console.log(result.data);
+                setCommentList(result.data);
+            } catch (error) {
+                console.error("Error fetching accounts:", error);
+            }
         }
-    ];
-    const [currentAccount, setCurrentAccount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(accounts[0]);
-    const [commentList, setComment] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
-        {
-            "id": 1,
-            "content": "コメント2本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本",
-            "createAccountName": "アカウント2",
-            "createAccountId": 1,
-            "createdAt": "2024.07.19 10:02",
-            "updatedAt": "2024.07.19 10:17"
-        },
-        {
-            "id": 2,
-            "content": "コメント1２２２２",
-            "createAccountName": "アカウント2",
-            "createAccountId": 2,
-            "createdAt": "2024.07.19 10:03",
-            "updatedAt": "22024.07.19 10:17"
-        }
-    ]);
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchCommentList();
+    }, []);
     // 削除
     const handleDelete = (id)=>{
         console.log(id);
     };
     // 新規コメント投稿内容
-    const [addComment, SetAddComment] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [addComment, SetAddComment] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const handleSetAddComment = (inputValue)=>{
         SetAddComment(inputValue);
     };
     // 登録処理
     const handleAddComment = ()=>{
         // call api
-        alert('登録処理');
+        alert("登録処理");
     };
     // 編集コメント投稿内容
     const [isShowEdit, setIsShowEdit] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [editComment, SetEditComment] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [editComment, SetEditComment] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const handleSetEditComment = (createId, commentId, commentContent)=>{
         SetEditComment(commentContent);
         setIsShowEdit(true);
@@ -75,7 +70,7 @@ function KanjyaDetail() {
     // 編集処理
     const handleEdit = (createId, commentId)=>{
         // call api
-        alert('編集処理');
+        alert("編集処理");
         setIsShowEdit(false);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -98,36 +93,36 @@ function KanjyaDetail() {
                                     d: "M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                    lineNumber: 84,
-                                    columnNumber: 13
+                                    lineNumber: 83,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                lineNumber: 83,
-                                columnNumber: 9
+                                lineNumber: 76,
+                                columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                            lineNumber: 82,
-                            columnNumber: 9
+                            lineNumber: 75,
+                            columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "text-gray-800 text-lg font-medium",
                             children: 11111
                         }, void 0, false, {
                             fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                            lineNumber: 87,
-                            columnNumber: 9
+                            lineNumber: 89,
+                            columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                    lineNumber: 81,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                lineNumber: 80,
+                lineNumber: 73,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -151,32 +146,32 @@ function KanjyaDetail() {
                                                 d: "M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                                lineNumber: 99,
+                                                lineNumber: 107,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                            lineNumber: 98,
+                                            lineNumber: 100,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                        lineNumber: 97,
-                                        columnNumber: 13
+                                        lineNumber: 99,
+                                        columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "text-gray-800 font-medium",
                                         children: comment.createAccountName
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                        lineNumber: 102,
-                                        columnNumber: 13
+                                        lineNumber: 113,
+                                        columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                lineNumber: 96,
-                                columnNumber: 11
+                                lineNumber: 98,
+                                columnNumber: 13
                             }, this),
                             currentAccount.id === comment.createAccountId ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
@@ -189,8 +184,8 @@ function KanjyaDetail() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                        lineNumber: 110,
-                                        columnNumber: 21
+                                        lineNumber: 120,
+                                        columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "text-sm text-gray-500",
                                         onClick: ()=>{
@@ -199,8 +194,8 @@ function KanjyaDetail() {
                                         children: comment.content
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                        lineNumber: 117,
-                                        columnNumber: 21
+                                        lineNumber: 129,
+                                        columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex justify-end whitespace-no-wrap",
@@ -222,30 +217,31 @@ function KanjyaDetail() {
                                                         fill: "#ffffff"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                                        lineNumber: 127,
-                                                        columnNumber: 21
+                                                        lineNumber: 158,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                                    lineNumber: 126,
-                                                    columnNumber: 19
+                                                    lineNumber: 148,
+                                                    columnNumber: 21
                                                 }, this),
-                                                " 削除"
+                                                " ",
+                                                "削除"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                            lineNumber: 122,
+                                            lineNumber: 144,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 143,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                lineNumber: 107,
+                                lineNumber: 118,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
@@ -254,7 +250,7 @@ function KanjyaDetail() {
                                         children: comment.content
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                        lineNumber: 134,
+                                        lineNumber: 169,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -277,42 +273,43 @@ function KanjyaDetail() {
                                                         fill: "#ffffff"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                                        lineNumber: 141,
-                                                        columnNumber: 21
+                                                        lineNumber: 185,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                                    lineNumber: 140,
-                                                    columnNumber: 19
+                                                    lineNumber: 175,
+                                                    columnNumber: 21
                                                 }, this),
-                                                " 削除"
+                                                " ",
+                                                "削除"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                            lineNumber: 136,
+                                            lineNumber: 171,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 170,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                lineNumber: 133,
+                                lineNumber: 168,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, comment.id, true, {
                         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                        lineNumber: 95,
-                        columnNumber: 9
+                        lineNumber: 94,
+                        columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
                 lineNumber: 92,
-                columnNumber: 5
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
                 className: "fixed bottom-0 left-0 w-full mr-0 pr-0 bg-gray-100 border-t p-4",
@@ -329,8 +326,8 @@ function KanjyaDetail() {
                             className: "flex-1 border rounded px-2 py-1 focus:outline-none focus:ring focus:border-blue-300 mr-0"
                         }, void 0, false, {
                             fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                            lineNumber: 153,
-                            columnNumber: 9
+                            lineNumber: 200,
+                            columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             className: "border-2 text-white px-4 py-1 rounded-md",
@@ -350,34 +347,34 @@ function KanjyaDetail() {
                                     fill: "#000000"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                    lineNumber: 165,
-                                    columnNumber: 13
+                                    lineNumber: 222,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                                lineNumber: 164,
-                                columnNumber: 10
+                                lineNumber: 213,
+                                columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                            lineNumber: 160,
-                            columnNumber: 9
+                            lineNumber: 209,
+                            columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                    lineNumber: 152,
-                    columnNumber: 7
+                    lineNumber: 199,
+                    columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-                lineNumber: 151,
-                columnNumber: 5
+                lineNumber: 198,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/kanjyaDetail/page.tsx",
-        lineNumber: 79,
+        lineNumber: 72,
         columnNumber: 5
     }, this);
 }
