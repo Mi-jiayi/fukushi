@@ -136,7 +136,7 @@ export default function KanjyaDetail() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-4">
         <div className="flex items-center space-x-4">
           <div className="bg-gray-300 rounded-lg">
@@ -158,7 +158,8 @@ export default function KanjyaDetail() {
           </span>
         </div>
       </div>
-      <div className="space-y-4">
+
+      <div className="flex-1 overflow-y-auto max-h-[550px] p-4 space-y-4">
         {commentList.map((comment) => (
           <div
             className="bg-white shadow-md rounded-lg p-4 space-y-2"
@@ -168,8 +169,8 @@ export default function KanjyaDetail() {
               <div className="bg-gray-300 rounded-lg p-2">
                 <svg
                   fill="#000000"
-                  width="64px"
-                  height="64px"
+                  width="24px"
+                  height="24px"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -210,7 +211,7 @@ export default function KanjyaDetail() {
               <div className="flex justify-end whitespace-no-wrap">
                 <button
                   onClick={() => handleDelete(comment.commentId)}
-                  className="bg-red-500 text-white px-4 py-1 text-sm rounded-md whitespace-no-wrap flex flex-row  "
+                  className="bg-red-500 text-white px-4 py-1 text-sm rounded-md whitespace-no-wrap flex flex-row"
                 >
                   <svg
                     width="12px"
@@ -233,7 +234,9 @@ export default function KanjyaDetail() {
             </div>
           </div>
         ))}
+        <div className="scroll-mb-1" />
       </div>
+
       <footer className="fixed bottom-0 left-0 w-full mr-0 pr-0 bg-gray-100 border-t p-4">
         <div className="flex items-center space-x-2">
           <input

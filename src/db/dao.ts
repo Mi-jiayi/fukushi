@@ -36,17 +36,22 @@ loadDataSource();
 
 // アカウント
 const accountDao = {
-  list: () => dataSource.accountList,
+  list: () => {
+    loadDataSource();
+    return dataSource.accountList;
+  },
 };
 
 // 患者
 const kanjyatDao = {
   listByAccountId: (accountId: number) => {
+    loadDataSource();
     return dataSource.kanjyaList.filter(
       (kanjya) => kanjya.accountId === accountId
     );
   },
   listByKanjyaId: (kanjyaId: number) => {
+    loadDataSource();
     return dataSource.kanjyaList.filter(
       (kanjya) => kanjya.kanjyaId === kanjyaId
     );
@@ -72,7 +77,8 @@ const commentDao = {
       }),
     ];
     save();
-    return oldLength - dataSource.commentList.length;
+    loadDataSource();
+    return dataSource.commentList.length - oldLength;
   },
   delete: (commentId: number) => {
     const oldLength = dataSource.commentList.length;
@@ -80,6 +86,7 @@ const commentDao = {
       (comment) => comment.commentId !== commentId
     );
     save();
+    loadDataSource();
     return dataSource.commentList.length - oldLength;
   },
   edit: (comment: CommentEdit) => {
@@ -90,9 +97,11 @@ const commentDao = {
     targetComment.content = comment.content;
     targetComment.updatedAt = formatDate(new Date());
     save();
+    loadDataSource();
     return old === targetComment.updatedAt;
   },
   list: (kanjyaId: number) => {
+    loadDataSource();
     return dataSource.commentList
       .filter((comment) => comment.kanjyaId === kanjyaId)
       .sort((cur, next) => {
