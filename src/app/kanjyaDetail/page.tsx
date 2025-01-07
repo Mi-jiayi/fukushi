@@ -1,7 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import axios from "axios";
+import {
+  getCommentList,
+  newComment,
+  updateComment,
+  deleteComment,
+} from "@/app/actions";
 import {
   Comment,
   CommentEditSchema,
@@ -24,18 +29,18 @@ export default function KanjyaDetail() {
   // コメントリストを取得
   const fetchCommentList = async () => {
     if (selectedAccount) {
-      try {
-        const kanjyaId = searchParams.get("kanjyaId");
-        const kanjyaName = searchParams.get("kanjyaName");
-        if (kanjyaName) {
-          setKanjyaName(kanjyaName);
+      const kanjyaId = searchParams.get("kanjyaId");
+      const kanjyaName = searchParams.get("kanjyaName");
+      if (kanjyaName) {
+        setKanjyaName(kanjyaName);
+      }
+      if (kanjyaId) {
+        try {
+          const res = await getCommentList(Number(kanjyaId));
+          setCommentList(res.data);
+        } catch (error) {
+          console.error("Error fetching comments:", error);
         }
-        const result = await axios.get("/api/comment/list", {
-          params: { kanjyaId },
-        });
-        setCommentList(result.data);
-      } catch (error) {
-        console.error("Error fetching accounts:", error);
       }
     }
   };
@@ -64,18 +69,13 @@ export default function KanjyaDetail() {
       }
       setIsProcessing(true);
       const kanjyaId = searchParams.get("kanjyaId");
-      const req = CommentAddSchema.parse({
-        accountId: Number(selectedAccount?.accountId),
-        kanjyaId: Number(kanjyaId),
-        content: addComment,
-        createAccountName: selectedAccount?.accountName,
-      });
-
-      await fetch(`/api/comment/add`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...req }),
-      });
+      try {
+        const name = selectedAccount ? selectedAccount.accountName : "";
+        const accountId = selectedAccount ? selectedAccount.accountId : "";
+        await newComment(Number(accountId), Number(kanjyaId), addComment, name);
+      } catch (error) {
+        console.error("Error add comment:", error);
+      }
       setIsProcessing(false);
       setAddComment("");
       fetchCommentList();
@@ -98,16 +98,11 @@ export default function KanjyaDetail() {
   // 編集処理
   const handleEdit = async () => {
     if (window.confirm("コメントを更新しますか？")) {
-      const req = CommentEditSchema.parse({
-        commentId: editCommentId,
-        content: editComment,
-      });
-      await fetch(`/api/comment/edit`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...req }),
-      });
-
+      try {
+        await updateComment(editCommentId, editComment);
+      } catch (error) {
+        console.error("Error update comment:", error);
+      }
       // clear
       setEditComment("");
       setEditCommentId(-1);
@@ -122,12 +117,11 @@ export default function KanjyaDetail() {
   // 削除
   const handleDelete = async (commentId: number) => {
     if (window.confirm("コメントを削除しますか？")) {
-      await fetch(`/api/comment/delete`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ commentId: Number(commentId) }),
-      });
-
+      try {
+        await deleteComment(commentId);
+      } catch (error) {
+        console.error("Error delete comment:", error);
+      }
       fetchCommentList();
     }
   };

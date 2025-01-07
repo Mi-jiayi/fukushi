@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getKanjyaList } from "@/app/actions";
 import Link from "next/link";
 import { Kanjya } from "../../model/schemas";
 import { useAccount } from "../../context/AccountProvider";
@@ -13,10 +13,10 @@ export default function KanjyaList() {
   const fetchKanjyaList = async () => {
     if (selectedAccount) {
       try {
-        const result = await axios.get("/api/kanjya/list");
-        setKanjyaList(result.data);
+        const res = await getKanjyaList();
+        setKanjyaList(res.data);
       } catch (error) {
-        console.error("Error fetching accounts:", error);
+        console.error("Error fetching kanjyas:", error);
       }
     }
   };

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { useAccount } from "../context/AccountProvider";
-import axios from "axios";
+import { getAccountList } from "@/app/actions";
 import { Account } from "../model/schemas";
 
 // ヘッダー
@@ -18,11 +18,10 @@ const Header = () => {
   // アカウントリストを取得
   const fetchAccountList = async () => {
     try {
-      const result = await axios.get("/api/account/list");
-      setAccountList(result.data);
-
-      if (result.data && result.data.length > 0 && !selectedAccount) {
-        setSelectedAccount(result.data[0]);
+      const res = await getAccountList();
+      setAccountList(res.data);
+      if (res.data && res.data.length > 0 && !selectedAccount) {
+        setSelectedAccount(res.data[0]);
       }
     } catch (error) {
       console.error("Error fetching accounts:", error);

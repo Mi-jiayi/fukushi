@@ -46,6 +46,14 @@ export const DbSchema = z.object({
   commentList: z.array(CommentSchema),
 });
 
+// レスポンス
+export const ResultSchema = z.object({
+  success: z.boolean(),
+  error: z.string(), 
+  data: z.optional(z.any()), 
+});
+
+
 // 型の推論（オプション）
 export type Account = z.infer<typeof AccountSchema>;
 export type Kanjya = z.infer<typeof KanjyaSchema>;
@@ -53,3 +61,4 @@ export type Comment = z.infer<typeof CommentSchema>;
 export type CommentAdd = z.infer<typeof CommentAddSchema>;
 export type CommentEdit = z.infer<typeof CommentEditSchema>;
 export type DbSchemaType = z.infer<typeof DbSchema>;
+export type Result = z.infer<typeof ResultSchema>;
