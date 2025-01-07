@@ -5,7 +5,7 @@ import Body from '@/components/Body'
 export default function App() {
 
   return (
-    <div className="p-4">
+    <div>
       <Header />
       <Body  />
     </div>

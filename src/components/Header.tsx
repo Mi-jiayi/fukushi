@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { IoPersonOutline } from "react-icons/io5";
+import { PersonIcon } from "@radix-ui/react-icons";
 import { useAccount } from "../context/AccountProvider";
 import axios from "axios";
 import { Account } from "../model/schemas";
@@ -65,8 +65,8 @@ const Header = () => {
           className="flex items-center bg-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
           onClick={toggleDropdown}
         >
-          <IoPersonOutline className="text-gray-800 w-5 h-5" />
-          <span className="text-gray-800 ml-2 font-medium">
+          <PersonIcon className="size-12 w-7 h-7" />
+          <span className="text-black-800 ml-2 font-medium">
             {selectedAccount ? selectedAccount.accountName : ""}
           </span>
         </button>

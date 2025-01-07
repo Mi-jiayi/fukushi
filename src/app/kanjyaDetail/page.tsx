@@ -15,7 +15,6 @@ type CommentForEdit = Comment & {
 export default function KanjyaDetail() {
   // 二重制御
   const [isProcessing, setIsProcessing] = useState(false);
-
   const searchParams = useSearchParams();
   const { selectedAccount } = useAccount();
   const [kanjyaName, setKanjyaName] = useState("");
@@ -26,7 +25,6 @@ export default function KanjyaDetail() {
   const fetchCommentList = async () => {
     if (selectedAccount) {
       try {
-        const accountId = selectedAccount.accountId;
         const kanjyaId = searchParams.get("kanjyaId");
         const kanjyaName = searchParams.get("kanjyaName");
         if (kanjyaName) {
@@ -91,7 +89,6 @@ export default function KanjyaDetail() {
       if (comment.commentId === commentId) {
         setEditComment(comment.content);
         setEditCommentId(comment.commentId);
-
         return { ...comment, isEdit: true };
       }
       return comment;
@@ -142,8 +139,8 @@ export default function KanjyaDetail() {
           <div className="bg-gray-300 rounded-lg">
             <svg
               fill="#000000"
-              width="64px"
-              height="64px"
+              width="56px"
+              height="56px"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -153,9 +150,7 @@ export default function KanjyaDetail() {
               />
             </svg>
           </div>
-          <span className="text-gray-800 text-lg font-medium">
-            {kanjyaName}
-          </span>
+          <span className="text-gray-800 text-2xl font-bold">{kanjyaName}</span>
         </div>
       </div>
 
@@ -169,8 +164,8 @@ export default function KanjyaDetail() {
               <div className="bg-gray-300 rounded-lg p-2">
                 <svg
                   fill="#000000"
-                  width="24px"
-                  height="24px"
+                  width="36px"
+                  height="36px"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -180,10 +175,11 @@ export default function KanjyaDetail() {
                   />
                 </svg>
               </div>
-              <span className="text-gray-800 font-medium">
+              <span className="text-black-800 text-lg font-semibold">
                 {comment.createAccountName}
               </span>
             </div>
+            <div className="text-sm text-gray-500">{comment.updatedAt}</div>
             <div>
               {comment.isEdit ? (
                 <textarea
@@ -197,7 +193,7 @@ export default function KanjyaDetail() {
               ) : !comment.isEdit &&
                 comment.accountId === selectedAccount?.accountId ? (
                 <div
-                  className="text-sm text-gray-500"
+                  className="font-light text-black-500"
                   onClick={() => {
                     handleSetEditComment(comment.commentId);
                   }}
@@ -205,13 +201,15 @@ export default function KanjyaDetail() {
                   {comment.content}
                 </div>
               ) : (
-                <div className="text-sm text-gray-500">{comment.content}</div>
+                <div className="font-light text-black-500">
+                  {comment.content}
+                </div>
               )}
 
               <div className="flex justify-end whitespace-no-wrap">
                 <button
                   onClick={() => handleDelete(comment.commentId)}
-                  className="bg-red-500 text-white px-4 py-1 text-sm rounded-md whitespace-no-wrap flex flex-row"
+                  className="bg-red-500 text-white px-2 py-1 text-sm rounded-md whitespace-no-wrap flex flex-row"
                 >
                   <svg
                     width="12px"

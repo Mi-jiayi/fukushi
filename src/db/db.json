@@ -58,33 +58,6 @@
   ],
   "commentList": [
     {
-      "commentId": 2,
-      "accountId": 2,
-      "kanjyaId": 1,
-      "content": "999999",
-      "createAccountName": "アカウント2",
-      "createdAt": "2024.07.19 10:03",
-      "updatedAt": "2025.01.06 20:30"
-    },
-    {
-      "commentId": 3,
-      "accountId": 1,
-      "kanjyaId": 1,
-      "content": "333333",
-      "createAccountName": "アカウント1",
-      "createdAt": "2025.01.06 20:29",
-      "updatedAt": "2025.01.06 20:30"
-    },
-    {
-      "commentId": 4,
-      "accountId": 1,
-      "kanjyaId": 1,
-      "content": "666666",
-      "createAccountName": "アカウント1",
-      "createdAt": "2025.01.06 20:30",
-      "updatedAt": "2025.01.06 20:30"
-    },
-    {
       "commentId": 5,
       "accountId": 1,
       "kanjyaId": 4,
@@ -101,6 +74,33 @@
       "createAccountName": "アカウント3",
       "createdAt": "2025.01.07 15:22",
       "updatedAt": "2025.01.07 15:22"
+    },
+    {
+      "commentId": 7,
+      "accountId": 1,
+      "kanjyaId": 1,
+      "content": "文本1111",
+      "createAccountName": "アカウント1",
+      "createdAt": "2025.01.07 16:26",
+      "updatedAt": "2025.01.07 16:26"
+    },
+    {
+      "commentId": 8,
+      "accountId": 1,
+      "kanjyaId": 1,
+      "content": "文本222",
+      "createAccountName": "アカウント1",
+      "createdAt": "2025.01.07 16:26",
+      "updatedAt": "2025.01.07 16:26"
+    },
+    {
+      "commentId": 9,
+      "accountId": 1,
+      "kanjyaId": 1,
+      "content": "文本333",
+      "createAccountName": "アカウント1",
+      "createdAt": "2025.01.07 16:26",
+      "updatedAt": "2025.01.07 16:26"
     }
   ]
 }

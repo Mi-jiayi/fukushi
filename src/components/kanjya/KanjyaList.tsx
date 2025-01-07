@@ -31,7 +31,6 @@ export default function KanjyaList() {
         <div key={kanjya.kanjyaId}>
           <Link
             href={`/kanjyaDetail?kanjyaId=${kanjya.kanjyaId}&kanjyaName=${kanjya.kanjyaName}`}
-            className="text-blue-500"
           >
             <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-4">
               <div className="flex items-center space-x-4">
@@ -49,7 +48,7 @@ export default function KanjyaList() {
                     />
                   </svg>
                 </div>
-                <span className="text-gray-800 text-lg font-medium">
+                <span className="text-black-800 text-lg font-semibold">
                   {kanjya.kanjyaName}
                 </span>
               </div>
