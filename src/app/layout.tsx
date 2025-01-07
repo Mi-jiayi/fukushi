@@ -1,9 +1,9 @@
-import './styles/globals.css';
-import { Metadata } from 'next';
-import { AccountProvider } from '../context/AccountProvider';
+import "./styles/globals.css";
+import { Metadata } from "next";
+import { AccountProvider } from "../context/AccountProvider";
 
 export const metadata: Metadata = {
-  title: 'fukushi app',
+  title: "fukushi app",
 };
 
 export default function RootLayout({

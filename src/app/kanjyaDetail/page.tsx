@@ -2,17 +2,12 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
-import Link from "next/link";
 import {
   Comment,
-  CommentAdd,
   CommentEditSchema,
   CommentAddSchema,
 } from "../../model/schemas";
 import { useAccount } from "../../context/AccountProvider";
-import { comment } from "postcss";
-import { number } from "zod";
-
 type CommentForEdit = Comment & {
   isEdit?: boolean;
 };
@@ -106,7 +101,6 @@ export default function KanjyaDetail() {
   // 編集処理
   const handleEdit = async () => {
     if (window.confirm("コメントを更新しますか？")) {
-
       const req = CommentEditSchema.parse({
         commentId: editCommentId,
         content: editComment,
@@ -121,9 +115,9 @@ export default function KanjyaDetail() {
       setEditComment("");
       setEditCommentId(-1);
       fetchCommentList();
-    }else{
+    } else {
       const updatedCommentList = commentList.map((comment) => {
-          return { ...comment, isEdit: false };
+        return { ...comment, isEdit: false };
       });
       setCommentList(updatedCommentList);
     }

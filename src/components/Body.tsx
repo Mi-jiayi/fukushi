@@ -1,8 +1,6 @@
 'use client';
-import React, { useState, useEffect ,useCallback } from 'react';
-import Header from '@/components/Header';
+import React from 'react';
 import KanyaList from '@/components/kanjya/KanjyaList';
-
 
 export default  function Body() {
 

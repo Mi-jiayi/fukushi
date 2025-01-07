@@ -1,25 +1,20 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { Account, AccountSchema } from "../model/schemas";
+import { Account } from "../model/schemas";
 
 type AccountContextType = {
   selectedAccount: Account | null;
   setSelectedAccount: (account: Account | null) => void;
 };
 
-// 创建 Context
+// コンテキストを作成
 const AccountContext = createContext<AccountContextType | null>(null);
 
-// 创建一个提供者组件
+// プロバイダコンポーネントを作成
 export const AccountProvider = ({ children }: { children: ReactNode }) => {
-  // 选中的用户
+  // 選択されたアカウント
   const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
-
-  // const updateSelectedAccount = (newAccount: Account) => {
-  //   const parsedData = AccountSchema.parse(newAccount); // 使用 zod 校验
-  //   setSelectedAccount(parsedData);
-  // };
 
   return (
     <AccountContext.Provider value={{ selectedAccount, setSelectedAccount }}>
@@ -28,12 +23,12 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// 自定义 Hook 来访问和更新账户信息
+// アカウント情報をアクセス・更新するためのカスタムフック
 export const useAccount = () => {
   const context = useContext(AccountContext);
 
   if (!context) {
-    throw new Error("useAccount 必须在 AccountProvider 中使用");
+    throw new Error("useAccount は AccountProvider 内で使用する必要があります");
   }
 
   return context;

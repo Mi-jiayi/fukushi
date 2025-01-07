@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "../../components/Header"; // 引入 Header 组件
+import Header from "../../components/Header";
 
 export default function RootLayout({
   children,
