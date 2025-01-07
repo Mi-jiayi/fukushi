@@ -90,7 +90,17 @@ const commentDao = {
         return dataSource.commentList.filter(
             comment => 
                 comment.kanjyaId === kanjyaId
-        )
+        ).sort((cur, next) => {
+            const dateCurUpdated = new Date(cur.updatedAt);
+            const dateNextUpdated = new Date(next.updatedAt);
+            
+            if (dateCurUpdated.getTime() === dateNextUpdated.getTime()) {
+                const dateCurCreated = new Date(cur.createdAt);
+                const dateNextCreated = new Date(next.createdAt);
+                return dateNextCreated.getTime() - dateCurCreated.getTime();
+            }
+            return dateNextUpdated.getTime() - dateCurUpdated.getTime();
+          });
     }
 }
 
@@ -99,7 +109,7 @@ const commentDao = {
  * @param date 
  * @returns 
  */
-export function formatDate(date : Date) {
+function formatDate(date : Date) {
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const dd = String(date.getDate()).padStart(2, '0');
@@ -107,6 +117,5 @@ export function formatDate(date : Date) {
     const min = String(date.getMinutes()).padStart(2, '0');
     return `${yyyy}.${mm}.${dd} ${hh}:${min}`;
 }
-
 
 export { accountDao, commentDao, kanjyatDao }; 
