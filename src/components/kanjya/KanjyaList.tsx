@@ -13,10 +13,7 @@ export default function KanjyaList() {
   const fetchKanjyaList = async () => {
     if (selectedAccount) {
       try {
-        const accountId = selectedAccount.accountId;
-        const result = await axios.get("/api/kanjya/listByAccountId", {
-          params: { accountId },
-        });
+        const result = await axios.get("/api/kanjya/list");
         setKanjyaList(result.data);
       } catch (error) {
         console.error("Error fetching accounts:", error);

@@ -44,18 +44,10 @@ const accountDao = {
 
 // 患者
 const kanjyatDao = {
-  listByAccountId: (accountId: number) => {
+  list: () => {
     loadDataSource();
-    return dataSource.kanjyaList.filter(
-      (kanjya) => kanjya.accountId === accountId
-    );
-  },
-  listByKanjyaId: (kanjyaId: number) => {
-    loadDataSource();
-    return dataSource.kanjyaList.filter(
-      (kanjya) => kanjya.kanjyaId === kanjyaId
-    );
-  },
+    return dataSource.kanjyaList;
+  }
 };
 
 // コメント
