@@ -1,50 +1,47 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import {
   getCommentList,
   newComment,
   updateComment,
   deleteComment,
 } from "@/app/actions";
-import {
-  Comment,
-} from "../../model/schemas";
-import { useAccount } from "../../context/AccountProvider";
+import { Comment } from "@/model/schemas";
+import { useAccount } from "@/context/AccountProvider";
 type CommentForEdit = Comment & {
   isEditing?: boolean;
 };
 
-export default function KanjyaDetail() {
+interface PageProps {
+  params: {
+    kanjyaId: number;
+    kanjyaName: string;
+  };
+}
+
+export default function KanjyaDetail({ params }: PageProps) {
+  const { kanjyaId, kanjyaName } = params;
+
   // 二重制御
   const [isProcessing, setIsProcessing] = useState(false);
-  const searchParams = useSearchParams();
   const { selectedAccount } = useAccount();
-  const [kanjyaName, setKanjyaName] = useState("");
   const [commentList, setCommentList] = useState<CommentForEdit[]>([]);
 
   // コメントリストを取得
   const fetchCommentList = async () => {
     if (selectedAccount) {
-      const kanjyaId = searchParams.get("kanjyaId");
-      const kanjyaName = searchParams.get("kanjyaName");
-      if (kanjyaName) {
-        setKanjyaName(kanjyaName);
-      }
-      if (kanjyaId) {
-        try {
-          const res = await getCommentList(Number(kanjyaId));
-          setCommentList(res.data);
-        } catch (error) {
-          console.error("Error fetching comments:", error);
-        }
+      try {
+        const res = await getCommentList(Number(kanjyaId));
+        setCommentList(res.data);
+      } catch (error) {
+        console.error("Error fetching comments:", error);
       }
     }
   };
 
   useEffect(() => {
     fetchCommentList();
-  }, []);
+  }, [kanjyaId, kanjyaName]);
 
   // 新規コメント投稿内容
   const [addComment, setAddComment] = useState<string>("");
@@ -136,7 +133,9 @@ export default function KanjyaDetail() {
               />
             </svg>
           </div>
-          <span className="text-gray-800 text-2xl font-bold">{kanjyaName}</span>
+          <span className="text-gray-800 text-2xl font-bold">
+            {decodeURIComponent(kanjyaName as string)}
+          </span>
         </div>
       </div>
 

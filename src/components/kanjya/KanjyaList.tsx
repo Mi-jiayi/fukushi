@@ -25,9 +25,7 @@ export default function KanjyaList() {
     <div className="space-y-4">
       {kanjyaList.map((kanjya) => (
         <div key={kanjya.kanjyaId}>
-          <Link
-            href={`/kanjyaDetail?kanjyaId=${kanjya.kanjyaId}&kanjyaName=${kanjya.kanjyaName}`}
-          >
+          <Link href={`/kanjyaDetail/${kanjya.kanjyaId}/${kanjya.kanjyaName}`}>
             <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-4">
               <div className="flex items-center space-x-4">
                 <div className="bg-gray-300 rounded-lg p-2">
