@@ -8,7 +8,9 @@ import { Account } from "../model/schemas";
 
 // ヘッダー
 const Header = () => {
+  // 現在選択されているアカウント情報
   const { selectedAccount, setSelectedAccount } = useAccount();
+  // カウントリスト
   const [accountList, setAccountList] = useState<Account[]>([]);
   // セレクトボックス表示フラグ
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -33,15 +35,14 @@ const Header = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
-  // アカウントを変更
+  // 現在選択されているアカウントを変更
   const handleAccountChange = (account: Account) => {
     setSelectedAccount(account);
-    setIsDropdownOpen(false); // 关闭下拉框
+    setIsDropdownOpen(false);
   };
 
   useEffect(() => {
     fetchAccountList();
-
     // セレクトボックスを非表示
     const handleClickOutside = (event: MouseEvent) => {
       if (

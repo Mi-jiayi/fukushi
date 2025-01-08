@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Kanjya } from "../../model/schemas";
 
 export default function KanjyaList() {
+  // 患者リスト
   const [kanjyaList, setKanjyaList] = useState<Kanjya[]>([]);
   // 患者リストを取得
   const fetchKanjyaList = async () => {

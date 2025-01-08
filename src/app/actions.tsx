@@ -2,8 +2,6 @@
 import { accountDao, commentDao, kanjyatDao } from "../db/dao";
 import { CommentAddSchema, CommentEditSchema, Result } from "../model/schemas";
 
-// データベースあアクセ
-
 /**
  * アカウント情報を取得するメソッド
  * @returns データベース内のアカウント情報を返します。

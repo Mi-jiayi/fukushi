@@ -24,16 +24,17 @@ export default function KanjyaDetail({
 }) {
   // router param
   const [kanjyaDetail, setKanjyaDetail] = useState<PageProps | null>(null);
-
   // 二重制御
   const [isProcessing, setIsProcessing] = useState(false);
+  // 現在選択されているアカウント情報を取得する
   const { selectedAccount } = useAccount();
+  // コメントリスト
   const [commentList, setCommentList] = useState<CommentForEdit[]>([]);
 
-  // コメントリストを取得
+  // 初期処理
   const init = async () => {
     try {
-      // query paramsを取得
+      // router paramsを取得
       const resolved = await params;
       setKanjyaDetail(resolved);
       // コメントリストを取得
@@ -78,6 +79,7 @@ export default function KanjyaDetail({
   // 編集コメント投稿内容
   const [editComment, setEditComment] = useState("");
   const [editCommentId, setEditCommentId] = useState(-1);
+  // 編集処理
   const handleSetEditComment = (commentId: number) => {
     const updatedCommentList = commentList.map((comment) => {
       if (comment.commentId === commentId) {
@@ -90,7 +92,6 @@ export default function KanjyaDetail({
     });
     setCommentList(updatedCommentList);
   };
-  // 編集処理
   const handleEdit = async () => {
     if (window.confirm("コメントを更新しますか？")) {
       try {
@@ -109,7 +110,7 @@ export default function KanjyaDetail({
       setCommentList(updatedCommentList);
     }
   };
-  // 削除
+  // 削除処理
   const handleDelete = async (commentId: number) => {
     if (window.confirm("コメントを削除しますか？")) {
       try {
