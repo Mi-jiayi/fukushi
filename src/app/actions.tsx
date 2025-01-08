@@ -1,7 +1,6 @@
 "use server";
 import { accountDao, commentDao, kanjyatDao } from "../db/dao";
 import { CommentAddSchema, CommentEditSchema, Result } from "../model/schemas";
-import { revalidatePath } from "next/cache";
 
 // データベースあアクセ
 

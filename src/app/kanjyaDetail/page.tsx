@@ -9,12 +9,10 @@ import {
 } from "@/app/actions";
 import {
   Comment,
-  CommentEditSchema,
-  CommentAddSchema,
 } from "../../model/schemas";
 import { useAccount } from "../../context/AccountProvider";
 type CommentForEdit = Comment & {
-  isEdit?: boolean;
+  isEditing?: boolean;
 };
 
 export default function KanjyaDetail() {
@@ -23,7 +21,6 @@ export default function KanjyaDetail() {
   const searchParams = useSearchParams();
   const { selectedAccount } = useAccount();
   const [kanjyaName, setKanjyaName] = useState("");
-  // 新規コメント投稿内容
   const [commentList, setCommentList] = useState<CommentForEdit[]>([]);
 
   // コメントリストを取得
@@ -48,11 +45,6 @@ export default function KanjyaDetail() {
   useEffect(() => {
     fetchCommentList();
   }, []);
-
-  useEffect(() => {
-    // アカウントが変わったらreload
-    fetchCommentList();
-  }, [selectedAccount]);
 
   // 新規コメント投稿内容
   const [addComment, setAddComment] = useState<string>("");
@@ -89,7 +81,7 @@ export default function KanjyaDetail() {
       if (comment.commentId === commentId) {
         setEditComment(comment.content);
         setEditCommentId(comment.commentId);
-        return { ...comment, isEdit: true };
+        return { ...comment, isEditing: true };
       }
       return comment;
     });
@@ -109,7 +101,7 @@ export default function KanjyaDetail() {
       fetchCommentList();
     } else {
       const updatedCommentList = commentList.map((comment) => {
-        return { ...comment, isEdit: false };
+        return { ...comment, isEditing: false };
       });
       setCommentList(updatedCommentList);
     }
@@ -175,7 +167,7 @@ export default function KanjyaDetail() {
             </div>
             <div className="text-sm text-gray-500">{comment.updatedAt}</div>
             <div>
-              {comment.isEdit ? (
+              {comment.isEditing ? (
                 <textarea
                   value={editComment}
                   onChange={(e) => setEditComment(e.target.value)}
@@ -184,7 +176,7 @@ export default function KanjyaDetail() {
                     handleEdit();
                   }}
                 />
-              ) : !comment.isEdit &&
+              ) : !comment.isEditing &&
                 comment.accountId === selectedAccount?.accountId ? (
                 <div
                   className="font-light text-black-500"

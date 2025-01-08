@@ -4,26 +4,22 @@ import { useState, useEffect } from "react";
 import { getKanjyaList } from "@/app/actions";
 import Link from "next/link";
 import { Kanjya } from "../../model/schemas";
-import { useAccount } from "../../context/AccountProvider";
 
 export default function KanjyaList() {
   const [kanjyaList, setKanjyaList] = useState<Kanjya[]>([]);
-  const { selectedAccount } = useAccount();
   // 患者リストを取得
   const fetchKanjyaList = async () => {
-    if (selectedAccount) {
-      try {
-        const res = await getKanjyaList();
-        setKanjyaList(res.data);
-      } catch (error) {
-        console.error("Error fetching kanjyas:", error);
-      }
+    try {
+      const res = await getKanjyaList();
+      setKanjyaList(res.data);
+    } catch (error) {
+      console.error("Error fetching kanjyas:", error);
     }
   };
 
   useEffect(() => {
     fetchKanjyaList();
-  }, [selectedAccount]);
+  }, []);
 
   return (
     <div className="space-y-4">
