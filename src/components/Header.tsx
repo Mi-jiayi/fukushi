@@ -58,7 +58,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-gray-300 p-4 flex justify-end items-center">
+    <header className="bg-zinc-300 p-4 flex justify-end items-center">
       <div className="relative" ref={dropdownRef}>
         <button
           className="flex items-center bg-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"

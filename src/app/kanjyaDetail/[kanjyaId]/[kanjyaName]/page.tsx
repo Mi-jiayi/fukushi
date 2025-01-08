@@ -13,14 +13,17 @@ type CommentForEdit = Comment & {
 };
 
 interface PageProps {
-  params: {
-    kanjyaId: number;
-    kanjyaName: string;
-  };
+  kanjyaId: number;
+  kanjyaName: string;
 }
 
-export default function KanjyaDetail({ params }: PageProps) {
-  const { kanjyaId, kanjyaName } = params;
+export default function KanjyaDetail({
+  params,
+}: {
+  params: Promise<PageProps>;
+}) {
+  // router param
+  const [kanjyaDetail, setKanjyaDetail] = useState<PageProps | null>(null);
 
   // 二重制御
   const [isProcessing, setIsProcessing] = useState(false);
@@ -28,20 +31,22 @@ export default function KanjyaDetail({ params }: PageProps) {
   const [commentList, setCommentList] = useState<CommentForEdit[]>([]);
 
   // コメントリストを取得
-  const fetchCommentList = async () => {
-    if (selectedAccount) {
-      try {
-        const res = await getCommentList(Number(kanjyaId));
-        setCommentList(res.data);
-      } catch (error) {
-        console.error("Error fetching comments:", error);
-      }
+  const init = async () => {
+    try {
+      // query paramsを取得
+      const resolved = await params;
+      setKanjyaDetail(resolved);
+      // コメントリストを取得
+      const res = await getCommentList(Number(resolved.kanjyaId));
+      setCommentList(res.data);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
     }
   };
 
   useEffect(() => {
-    fetchCommentList();
-  }, [kanjyaId, kanjyaName]);
+    init();
+  }, [params]);
 
   // 新規コメント投稿内容
   const [addComment, setAddComment] = useState<string>("");
@@ -57,7 +62,7 @@ export default function KanjyaDetail({ params }: PageProps) {
         return;
       }
       setIsProcessing(true);
-      const kanjyaId = searchParams.get("kanjyaId");
+      const kanjyaId = kanjyaDetail?.kanjyaId;
       try {
         const name = selectedAccount ? selectedAccount.accountName : "";
         const accountId = selectedAccount ? selectedAccount.accountId : "";
@@ -67,7 +72,7 @@ export default function KanjyaDetail({ params }: PageProps) {
       }
       setIsProcessing(false);
       setAddComment("");
-      fetchCommentList();
+      init();
     }
   };
   // 編集コメント投稿内容
@@ -95,7 +100,7 @@ export default function KanjyaDetail({ params }: PageProps) {
       // clear
       setEditComment("");
       setEditCommentId(-1);
-      fetchCommentList();
+      init();
     } else {
       const updatedCommentList = commentList.map((comment) => {
         return { ...comment, isEditing: false };
@@ -111,7 +116,7 @@ export default function KanjyaDetail({ params }: PageProps) {
       } catch (error) {
         console.error("Error delete comment:", error);
       }
-      fetchCommentList();
+      init();
     }
   };
 
@@ -134,7 +139,9 @@ export default function KanjyaDetail({ params }: PageProps) {
             </svg>
           </div>
           <span className="text-gray-800 text-2xl font-bold">
-            {decodeURIComponent(kanjyaName as string)}
+            {kanjyaDetail
+              ? decodeURIComponent(kanjyaDetail.kanjyaName as string)
+              : ""}
           </span>
         </div>
       </div>
