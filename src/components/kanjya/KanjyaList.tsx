@@ -22,7 +22,7 @@ export default function KanjyaList() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4 w-4/5 mx-auto">
+    <div className="flex flex-col gap-4 w-11/12 mx-auto">
       {kanjyaList.map((kanjya, index) => (
         <div
           key={kanjya.kanjyaId}
