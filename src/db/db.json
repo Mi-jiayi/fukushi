@@ -76,15 +76,6 @@
       "updatedAt": "2025.01.07 15:22"
     },
     {
-      "commentId": 7,
-      "accountId": 1,
-      "kanjyaId": 1,
-      "content": "文本5555",
-      "createAccountName": "アカウント1",
-      "createdAt": "2025.01.07 16:26",
-      "updatedAt": "2025.01.07 17:44"
-    },
-    {
       "commentId": 8,
       "accountId": 1,
       "kanjyaId": 1,
@@ -92,24 +83,6 @@
       "createAccountName": "アカウント1",
       "createdAt": "2025.01.07 16:26",
       "updatedAt": "2025.01.07 16:26"
-    },
-    {
-      "commentId": 9,
-      "accountId": 1,
-      "kanjyaId": 1,
-      "content": "文本333",
-      "createAccountName": "アカウント1",
-      "createdAt": "2025.01.07 16:26",
-      "updatedAt": "2025.01.07 16:26"
-    },
-    {
-      "commentId": 10,
-      "accountId": 1,
-      "kanjyaId": 1,
-      "content": "文本47777",
-      "createAccountName": "アカウント1",
-      "createdAt": "2025.01.07 17:28",
-      "updatedAt": "2025.01.07 17:43"
     },
     {
       "commentId": 11,
@@ -121,15 +94,6 @@
       "updatedAt": "2025.01.07 17:43"
     },
     {
-      "commentId": 12,
-      "accountId": 1,
-      "kanjyaId": 1,
-      "content": "8888",
-      "createAccountName": "アカウント1",
-      "createdAt": "2025.01.07 17:44",
-      "updatedAt": "2025.01.08 15:07"
-    },
-    {
       "commentId": 13,
       "accountId": 1,
       "kanjyaId": 2,
@@ -137,24 +101,6 @@
       "createAccountName": "アカウント1",
       "createdAt": "2025.01.07 17:44",
       "updatedAt": "2025.01.07 17:44"
-    },
-    {
-      "commentId": 14,
-      "accountId": 2,
-      "kanjyaId": 1,
-      "content": "2222222",
-      "createAccountName": "アカウント2",
-      "createdAt": "2025.01.07 18:54",
-      "updatedAt": "2025.01.07 18:54"
-    },
-    {
-      "commentId": 15,
-      "accountId": 3,
-      "kanjyaId": 1,
-      "content": "3333333333",
-      "createAccountName": "アカウント3",
-      "createdAt": "2025.01.07 18:55",
-      "updatedAt": "2025.01.07 18:55"
     }
   ]
 }

@@ -1,3 +1,4 @@
+import "@/app/styles/globals.css";
 import Link from "next/link";
 import Header from "@/components/Header";
 
@@ -15,7 +16,7 @@ export default function RootLayout({
           className="flex items-center space-x-4 text-black text-sm font-medium  p-2 pl-0 clear-right"
         >
           <svg
-            fill="#000000"
+            className="text-zinc-300"
             width="32px"
             height="32px"
             viewBox="0 0 24 24"

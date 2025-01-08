@@ -22,17 +22,20 @@ export default function KanjyaList() {
   }, []);
 
   return (
-    <div className="space-y-4">
-      {kanjyaList.map((kanjya) => (
-        <div key={kanjya.kanjyaId}>
+    <div className="flex flex-col gap-4 w-4/5 mx-auto">
+      {kanjyaList.map((kanjya, index) => (
+        <div
+          key={kanjya.kanjyaId}
+          className={`flex flex-col gap-4 ${index === 0 ? "mt-8" : ""}`}
+        >
           <Link href={`/kanjyaDetail/${kanjya.kanjyaId}/${kanjya.kanjyaName}`}>
-            <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-4">
-              <div className="flex items-center space-x-4">
+            <li className="flex items-center gap-2 shadow py-2 px-4 border border-solid border-zinc-200 hover:shadow-md transition active:shadow-sm active:bg-zinc-200 duration-75">
+              <div className="flex items-center space-x-4 flex-1">
                 <div className="bg-gray-300 rounded-lg p-2">
                   <svg
                     fill="#000000"
-                    width="64px"
-                    height="64px"
+                    width="32px"
+                    height="32px"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -46,7 +49,7 @@ export default function KanjyaList() {
                   {kanjya.kanjyaName}
                 </span>
               </div>
-              <div>
+              <div className="ml-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -62,7 +65,7 @@ export default function KanjyaList() {
                   />
                 </svg>
               </div>
-            </div>
+            </li>
           </Link>
         </div>
       ))}

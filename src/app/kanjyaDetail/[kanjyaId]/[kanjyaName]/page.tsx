@@ -122,13 +122,13 @@ export default function KanjyaDetail({
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-4">
+      <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-4 border-b border-gray-300">
         <div className="flex items-center space-x-4">
           <div className="bg-gray-300 rounded-lg">
             <svg
               fill="#000000"
-              width="56px"
-              height="56px"
+              width="42px"
+              height="42px"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -146,10 +146,10 @@ export default function KanjyaDetail({
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto max-h-[550px] p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto max-h-[550px] p-4 space-y-4 w-4/5 mx-auto">
         {commentList.map((comment) => (
           <div
-            className="bg-white shadow-md rounded-lg p-4 space-y-2"
+            className="bg-white shadow-md rounded-lg p-4 space-y-2 border border-gray-300"
             key={comment.commentId}
           >
             <div className="flex items-center space-x-4">
