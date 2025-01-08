@@ -84,8 +84,9 @@ export default function KanjyaDetail({
         setEditComment(comment.content);
         setEditCommentId(comment.commentId);
         return { ...comment, isEditing: true };
+      } else {
+        return { ...comment, isEditing: false };
       }
-      return comment;
     });
     setCommentList(updatedCommentList);
   };
