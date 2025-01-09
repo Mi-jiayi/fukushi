@@ -148,7 +148,7 @@ export default function KanjyaDetail({
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto max-h-[550px] p-4 space-y-4 w-11/12 mx-auto">
+      <div className="flex-1 overflow-y-auto max-h-[70vh] p-4 space-y-4 w-11/12 mx-auto">
         {commentList.map((comment) => (
           <div
             className="bg-white shadow-md rounded-lg p-4 space-y-2 border border-gray-300"
