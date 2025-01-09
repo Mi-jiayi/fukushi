@@ -95,7 +95,8 @@ export default function KanjyaDetail({
   const handleEdit = async () => {
     if (window.confirm("コメントを更新しますか？")) {
       try {
-        await updateComment(editCommentId, editComment);
+        const kanjyaId = kanjyaDetail ? kanjyaDetail.kanjyaId : -1;
+        await updateComment(Number(kanjyaId), editCommentId, editComment);
       } catch (error) {
         console.error("Error update comment:", error);
       }

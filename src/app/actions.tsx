@@ -87,13 +87,15 @@ export async function newComment(
 
 /**
  * コメントを更新するメソッド
+ * @param kanjyaId 患者ID
  * @param commentId コメントID
  * @param content 新しいコメント内容
  * @returns コメント更新操作の結果で、成功可否や関連データ、エラー情報を含みます。
  */
-export async function updateComment(commentId: number, content: string) {
+export async function updateComment(kanjyaId: number,commentId: number, content: string) {
   let result: Result = { success: false, error: "" };
   const validatedFields = CommentEditSchema.safeParse({
+    kanjyaId,
     content,
     commentId,
   });
@@ -106,6 +108,7 @@ export async function updateComment(commentId: number, content: string) {
 
   try {
     const commentEdit = {
+      kanjyaId,
       content,
       commentId,
     };

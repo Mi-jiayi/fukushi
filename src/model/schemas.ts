@@ -36,6 +36,7 @@ export const CommentAddSchema = z.object({
 });
 
 export const CommentEditSchema = z.object({
+  kanjyaId: z.number(),
   commentId: z.number(),
   content: z.string(),
 });

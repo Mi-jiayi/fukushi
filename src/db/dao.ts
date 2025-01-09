@@ -46,7 +46,16 @@ const accountDao = {
 const kanjyatDao = {
   list: () => {
     loadDataSource();
-    return dataSource.kanjyaList;
+    return dataSource.kanjyaList.sort((cur, next) => {
+      const dateCurUpdated = new Date(cur.updatedAt);
+      const dateNextUpdated = new Date(next.updatedAt);
+      if (dateCurUpdated.getTime() === dateNextUpdated.getTime()) {
+        const dateCurCreated = new Date(cur.createdAt);
+        const dateNextCreated = new Date(next.createdAt);
+        return dateNextCreated.getTime() - dateCurCreated.getTime();
+      }
+      return dateNextUpdated.getTime() - dateCurUpdated.getTime();
+    });;
   },
 };
 
@@ -70,6 +79,7 @@ const commentDao = {
         updatedAt: formatDate(new Date()),
       }),
     ];
+    commentDao.updateKanjya(comment.kanjyaId,formatDate(new Date()));
     save();
     loadDataSource();
     return dataSource.commentList.length - oldLength;
@@ -90,6 +100,7 @@ const commentDao = {
     const old = targetComment.updatedAt;
     targetComment.content = comment.content;
     targetComment.updatedAt = formatDate(new Date());
+    commentDao.updateKanjya(comment.kanjyaId,formatDate(new Date()));
     save();
     loadDataSource();
     return old === targetComment.updatedAt;
@@ -110,6 +121,15 @@ const commentDao = {
         return dateNextUpdated.getTime() - dateCurUpdated.getTime();
       });
   },
+  // コメントの更新とともに、患者情報も更新する
+  updateKanjya(kanjyaId:number,updateAt:string){
+    const targetKanjya = dataSource.kanjyaList.filter(
+      (item) => item.kanjyaId === kanjyaId
+    )[0];
+    const old = targetKanjya.updatedAt;
+    targetKanjya.updatedAt = updateAt;
+    return old === targetKanjya.updatedAt;
+  }
 };
 
 /**
