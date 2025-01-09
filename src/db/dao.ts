@@ -16,16 +16,16 @@ let dataSource: DbSchemaType = {
   commentList: [],
 };
 
-function loadDataSource(){
-    try {
-        // db.json ファイルを読み込む
-        const data = fs.readFileSync(dbPath, 'utf8');
-        const jsonData = JSON.parse(data);
-        // 変換する
-        dataSource = DbSchema.parse(jsonData);
-    } catch (error) {
-        console.error('db.json の読み込みエラー:', error);
-    }
+function loadDataSource() {
+  try {
+    // db.json ファイルを読み込む
+    const data = fs.readFileSync(dbPath, "utf8");
+    const jsonData = JSON.parse(data);
+    // 変換する
+    dataSource = DbSchema.parse(jsonData);
+  } catch (error) {
+    console.error("db.json の読み込みエラー:", error);
+  }
 }
 
 function save() {
@@ -47,14 +47,16 @@ const kanjyatDao = {
   list: () => {
     loadDataSource();
     return dataSource.kanjyaList;
-  }
+  },
 };
 
 // コメント
 const commentDao = {
   add: (comment: CommentAdd) => {
     const maxId =
-      dataSource.commentList[dataSource.commentList.length - 1].commentId;
+      dataSource.commentList.length === 0
+        ? 0
+        : dataSource.commentList[dataSource.commentList.length - 1].commentId;
     const oldLength = dataSource.commentList.length;
     dataSource.commentList = [
       ...dataSource.commentList,
