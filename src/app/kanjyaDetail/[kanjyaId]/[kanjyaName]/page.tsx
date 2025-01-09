@@ -158,8 +158,8 @@ export default function KanjyaDetail({
               <div className="bg-gray-300 rounded-lg p-2">
                 <svg
                   fill="#000000"
-                  width="36px"
-                  height="36px"
+                  width="32px"
+                  height="32px"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >

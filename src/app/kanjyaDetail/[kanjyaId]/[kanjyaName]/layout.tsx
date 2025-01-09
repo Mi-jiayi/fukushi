@@ -13,7 +13,7 @@ export default function RootLayout({
       <div className="p-0 pl-0 ml-0">
         <Link
           href={`/`}
-          className="flex items-center space-x-4 text-black text-sm font-medium  p-2 pl-0 clear-right"
+          className="flex items-center space-x-4 text-black text-lg font-medium  p-2 pl-0 clear-right"
         >
           <svg
             className="text-zinc-300"
