@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <div>
       <Header></Header>
-      <div className="p-0 pl-0 ml-0">
+      <div className="inline-flex items-center space-x-4">
         <Link
           href={`/`}
           className="flex items-center space-x-4 text-black text-lg font-medium  p-2 pl-0 clear-right"
